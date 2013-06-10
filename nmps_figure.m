@@ -1,0 +1,13 @@
+function [ H ] = nmps_figure()
+%nmps_figure Creates a new figure
+%   Replacement for matlabs figure
+    % include settings
+    nmps_settings;
+    H = figure ('DefaultTextFontName', 'Times', ...
+                'DefaultTextFontSize', Tsize,...
+                'DefaultAxesFontName', 'Times',...
+                'DefaultAxesFontSize', Lsize,...
+                'Position',[figurePosLeft figurePosBottom figureWidth figureHeight]);
+
+end
+

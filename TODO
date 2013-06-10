@@ -1,0 +1,6 @@
+loglog
+semilogx
+semilogy
+subplot
+change settings
+replace nmps_settings.m's content with a more reasonable object or the like

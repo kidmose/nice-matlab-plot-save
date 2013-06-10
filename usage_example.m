@@ -1,4 +1,5 @@
 %% Generate some data to plot - Sampling a Pareto distributions
+clear; clc; close all;
 % Parameters are calculated from:
 %   Manually fitted LLCD: 400*x.^-0.83;
 %   LLCD = 1 - CDF
@@ -12,30 +13,23 @@ x = k./((1-u).^(1/alpha)); % inverse pareto cdf
 x_sorted = sort(x,'descend');
 y = linspace(0,1,u_len);
 
-%% Generelle plot parametre:
-Lwidth = 1.5;           % Linetykkelse
-Msize = 20;             % Marker størelse
-Tsize = 16;             % Tekststørrelse
-LTsize = 12;            % Legend Tekststørrelse
-figureHeight = 500;     % Højde på figuren
-figureWidth = 1400;      % Bredde på figuren
-figurePosBottom = 10;  % Figurplacering relativt til bunden af skærmen
-figurePosLeft = 10;    % Figurplacering relativt til venstre side af skærmen
-
 %% ordinary plot
-figure ('DefaultTextFontName', 'Times','DefaultTextFontSize', LTsize,'DefaultAxesFontName', 'Times','DefaultAxesFontSize', LTsize,'Position',[figurePosLeft figurePosBottom figureWidth figureHeight]);
-figure
+nmps_figure;
 plot(x_sorted,y);
-title('Title of ordinary plot'); 
-xlabel('Packet number','Interpreter','latex','fontsize',Tsize);
-ylabel('Interarrival time [ms]','Interpreter','latex','fontsize',Tsize);
-title('Interarrival time pr. packet','Interpreter','latex','fontsize',Tsize);
+nmps_xlabel('Some text for xlabel')
+nmps_ylabel('Some text for ylabel$\alpha _{k,2}$')
+nmps_title('A title')
+nmps_save(gcf,'test01')
 
-set(gca,'Xlim',[0 107030])
-set(gcf,'PaperPositionMode','auto');
-plot_save = [import_file,'_time'];
-saveas(gcf,plot_save,'png');  % Vælg andet format, eks. png hvis krævet
+nmps_figure;
+loglog(x_sorted,y);
+nmps_xlabel('Another x label')
+nmps_ylabel('Some y label for this figure')
+nmps_title('A title for the second test plot')
+nmps_save(gcf,'test02')
 
+
+break;
 set(get(AX(1),'Ylabel'),'String','CPU forbrug [%]','fontsize',Tsize); 
 set(get(AX(2),'Ylabel'),'String','DMUer [antal]','fontsize',Tsize);
 set(get(AX(1),'Xlabel'),'String','Tid [m]','fontsize',Tsize);
