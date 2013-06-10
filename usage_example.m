@@ -21,6 +21,7 @@ nmps_ylabel('Some text for ylabel$\alpha _{k,2}$')
 nmps_title('A title')
 nmps_save(gcf,'test01')
 
+%% loglog plot
 nmps_figure;
 loglog(x_sorted,y);
 nmps_xlabel('Another x label')
